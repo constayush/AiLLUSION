@@ -1,0 +1,52 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+
+  text-decoration: inherit;
+}
+a:hover {
+  color: #c757ff;
+}
+
+body {
+  margin: 0;
+padding: 0;
+box-sizing: border-box;
+background-image:url(../public/grid.svg);
+
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+
+  
+}
+
+
+button {
+  border-radius: 8px;
+  border: 2px solid  #ffffff6f;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.35s;
+}
+button:hover {
+background-color: #00000095;
+  border-color: #ffffff;
+}
+button:focus,
+button:focus-visible {
+  outline: 6px auto -webkit-focus-ring-color;
+}
+
