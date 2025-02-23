@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# AI Image Gallery - Anonymous Hall of Fame
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Overview
 
-Currently, two official plugins are available:
+AI Image Gallery is a **free AI-powered image generation platform** where users can generate AI images and submit them anonymously to a "Hall of Fame". No one knows who created the images, making it a fun and open space for creative exploration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+- **AI Image Generation** – Generate AI images using free APIs (Stable Diffusion via Stable Horde).
+- **Anonymous Hall of Fame** – Users can upload AI-generated images anonymously.
+- **Search & Filters** – Browse images with categories and tags.
+- **Likes & Reactions** – Engage with images through likes or reactions.
+- **Customization Options** – Modify prompts and regenerate images.
+- **Leaderboard & Trending** – See the most popular AI-generated images.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend**: React.js / Vue.js + Tailwind CSS / Material-UI
+- **Backend**: Firebase / Supabase (optional, for storing metadata)
+- **AI API**: Stable Diffusion (via Stable Horde API)
+- **Storage**: Cloudinary / Firebase Storage (for images)
+- **Authentication**: Firebase Auth (Optional, for personalized features)
+- **Hosting**: Vercel / Netlify
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🔥 Free Tier Limitations
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+| Service               | Free Tier Limit (Per Month)          | Estimated Daily Users |
+| --------------------- | ------------------------------------ | --------------------- |
+| Stable Horde (AI API) | Community-based, slower at high load | Unlimited (but slow)  |
+| Firebase Firestore    | 50,000 reads, 20,000 writes          | \~1,500 users/day     |
+| Cloudinary (Storage)  | 25GB bandwidth                       | \~833 users/day       |
+| Vercel (Hosting)      | 100GB bandwidth                      | \~3,333 users/day     |
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🤝 Contributing
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Feel free to **fork** this repo, submit issues, and create pull requests! 🚀
+
