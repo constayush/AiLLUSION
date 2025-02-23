@@ -1,3 +1,5 @@
+
+ @import "tailwindcss";
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -50,3 +52,28 @@ button:focus-visible {
   outline: 6px auto -webkit-focus-ring-color;
 }
 
+
+
+h1 {
+  position: relative;
+  font-weight: bold;
+}
+
+.bg-vid {
+  object-fit: cover;
+  border-radius: 8px;
+  border: 20px solid #ffffff50;
+ 
+}
+
+.scrolled-nav{
+  background-color: #00000053;
+padding: 1rem;
+border: #ffffff36 1px solid;
+  backdrop-filter: blur(50px);
+  
+}
+nav{
+  border: transparent 1px solid;
+  transition: all 0.35s ease-in-out;
+}

@@ -2,7 +2,7 @@
 
 ## 🚀 Overview
 
-AI Image Gallery is a **free AI-powered image generation platform** where users can generate AI images and submit them anonymously to a "Hall of Fame". No one knows who created the images, making it a fun and open space for creative exploration.
+IncognitoArt is a **free AI-powered image generation platform** where users can generate AI images and submit them anonymously to a "Hall of Fame". No one knows who created the images, making it a fun and open space for creative exploration.
 
 ## 🌟 Features
 
