@@ -23,18 +23,22 @@ a:hover {
 }
 
 body {
-  margin: 0;
-padding: 0;
-box-sizing: border-box;
-background-image:url(../public/grid.svg);
-
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-
-  
+ background: #050505;
 }
 
+.grid-bg{
+  background-image:url(../public/grid.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.holo-bg{
+  background-image:url(../public/holobg.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: blur(10000px);
+}
 
 button {
   border-radius: 8px;
@@ -76,4 +80,35 @@ border: #ffffff36 1px solid;
 nav{
   border: transparent 1px solid;
   transition: all 0.35s ease-in-out;
+}
+
+.section-gradient{
+  background: rgb(146,87,255);
+  background: -moz-linear-gradient(180deg, rgba(146,87,255,0.644782913165266) 0%, rgba(255,255,255,0) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(146,87,255,0.644782913165266) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(180deg, rgba(146,87,255,0.644782913165266) 0%, rgba(255,255,255,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9257ff",endColorstr="#ffffff",GradientType=1);
+}
+
+.gradient-blue{
+  background: rgb(146,87,255);
+  background: -moz-linear-gradient(261deg, rgba(146,87,255,1) 0%, rgba(124,73,255,1) 20%, rgba(107,61,251,1) 31%, rgba(100,55,255,1) 37%, rgba(21,0,255,1) 100%);
+  background: -webkit-linear-gradient(261deg, rgba(146,87,255,1) 0%, rgba(124,73,255,1) 20%, rgba(107,61,251,1) 31%, rgba(100,55,255,1) 37%, rgba(21,0,255,1) 100%);
+  background: linear-gradient(261deg, rgba(146,87,255,1) 0%, rgba(124,73,255,1) 20%, rgba(107,61,251,1) 31%, rgba(100,55,255,1) 37%, rgba(21,0,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9257ff",endColorstr="#1500ff",GradientType=1);
+}
+
+.btn-gradient{
+  background-size: 200% auto;
+ background-image:  linear-gradient(81.02deg, #fa556056 -53.47%, #b14bf4 25.52%, #4d91ff 64.8%);
+ transition: all 0.35s ease-in-out;
+}
+.btn-gradient:hover{
+  background-position: right center;
+
+}
+
+
+.hero-con{
+
 }
