@@ -15,7 +15,6 @@
 
 a {
   font-weight: 500;
-
   text-decoration: inherit;
 }
 a:hover {
@@ -23,7 +22,9 @@ a:hover {
 }
 
 body {
+  color: #ffffff ;
  background: #050505;
+ font-family: "Montserrat", sans-serif;
 }
 
 .grid-bg{
@@ -108,7 +109,16 @@ nav{
 
 }
 
-
-.hero-con{
-
+.masonry {
+  column-count: 3; 
+  column-gap: 1rem;
+  /* column-width: calc(72rem/3.1); */
 }
+
+.masonry div{
+  width: 100%;
+}
+.cermo-font{
+  font-family: "Cormorant", serif;
+}
+
