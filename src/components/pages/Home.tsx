@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react"; // Icons for menu toggle
 import { ArrowRight } from "lucide-react";
-import element1 from "../../assets/element.svg";
+
 import LocomotiveScroll from 'locomotive-scroll';
 import gif1 from "../../assets/gif1.gif";
-import { motion, useScroll, useTransform } from "motion/react"
+import { motion, useScroll } from "motion/react"
 function Home() {
 
   const { scrollYProgress } = useScroll(); 
