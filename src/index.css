@@ -38,7 +38,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  filter: blur(10000px);
+  filter: blur(230px);
 }
 
 button {
@@ -49,6 +49,7 @@ button {
   transition: all 0.35s;
 }
 button:hover {
+  color: #fff;
 background-color: #00000095;
   border-color: #ffffff;
 }
