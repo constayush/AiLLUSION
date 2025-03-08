@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../ui/Navbar';
-
+import motion from "motion";
 function InfinityArchive() {const infinity_archive_imgs_Arr = [
     {
       img: "https://images.unsplash.com/photo-1740004731264-3cde5c198cc2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8",
@@ -41,8 +41,9 @@ function InfinityArchive() {const infinity_archive_imgs_Arr = [
   ];
   return (
 
-    <div className='w-full flex flex-col justify-center items-center pt-40 mb-12'>
-    <Navbar />
+    <div className='w-full grid-bg flex flex-col justify-center items-center pt-40 mb-12'>
+        
+
     <h1 className='text-6xl cermo-font font-bold mb-6'>Infinity Archive<span className="text-[#c757ff]">.</span></h1>
     <div className="masonry lg:p-0 p-4">
     {infinity_archive_imgs_Arr.map((e, index) => (

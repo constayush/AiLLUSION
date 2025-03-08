@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Mic } from "lucide-react";
 const SpeechToText: React.FC<{ onTextGenerated: (text: string) => void }> = ({ onTextGenerated }) => {
   const [isListening, setIsListening] = useState<boolean>(false);
   const [transcript, setTranscript] = useState<string>("");
@@ -36,9 +36,9 @@ const SpeechToText: React.FC<{ onTextGenerated: (text: string) => void }> = ({ o
    
       <button
         onClick={startListening}
-        className={`p-3 rounded-lg ${isListening ? "bg-red-500" : "bg-pink-500"}  w-full bg-blue-500 p-2 rounded-md hover:bg-blue-600 disabled:bg-blue-300 text-white`}
+        className={`p-3  ${isListening ? "bg-red-500" : "bg-[#0f0f0f]" } rounded-full flex justify-center items-center   p-2  hover:bg-blue-600 disabled:bg-blue-300 text-white`}
       >
-        {isListening ? "Listening..." : "Start Speaking"}
+        <Mic/>
       </button>
     //   <p className="mt-3 font-semibold">{transcript}</p>
     

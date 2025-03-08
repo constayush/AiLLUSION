@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Menu, Scale, X } from "lucide-react"; // Icons for menu toggle
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
-
-import gif1 from "../../assets/gif1.gif";
 import { motion, useScroll } from "motion/react";
 import Navbar from "../ui/Navbar";
 import Footer from "../ui/Footer";
 import { easeIn } from "motion";
+import { Search } from "lucide-react";
+import SpeachToText from "../ui/STT";
 function Home() {
   const [cursorPosition, setCursorPosition] = useState({ x: 500, y: 300 });
 
@@ -69,169 +69,47 @@ function Home() {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, ease: easeIn }}
-      className="hero overflow-x-hidden w-full min-h-screen flex flex-col justify-center items-center relative"
-    >
-      <motion.span
-        initial={{ scale: 0.5 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.85, ease: easeIn }}
-        className="grid-bg z-0 absolute min-w-full min-h-screen"
-      ></motion.span>
+    <div className="home-con  grid-bg min-h-screen w-full mt-40 flex flex-col items-center">
+      <div className="home relative max-w-6xl min-h-screen p-2 gap-4 flex flex-col items-center">
+        <span className="absolute bg-gradients -z-1 bg-[#ffffff] w-[30%] h-[50%]  blur-[200px] "></span>
+        <span className="absolute bg-gradients -z-2 bg-[#008cff] w-[30%] h-[50%]  blur-[200px] "></span>
 
-      {/* Navbar //width problem responsive*/}
-
-      <Navbar />
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }} // Start off-screen
-        animate={{ opacity: 1, x: 0 }} // Animate to normal
-        exit={{ opacity: 0, x: 50 }} // Animate out
-        transition={{ duration: 0.65 }} // Speed
-        className="hero-con  relative max-w-5xl mt-40 text-center flex flex-col justify-center items-center gap-12 px-4"
-      >
-        <motion.div className="holo-bg -z-2 absolute min-w-[40%] min-h-screen"></motion.div>
-        <span className="-z-3 absolute blur-[100px] bg-[#292142] w-[40%] h-full"></span>
-        <div className="w-full flex relative grid-bg flex-col gap-2 items-center justify-center">
-          <motion.div
-            id="cursor"
-            className="absolute -z-2 w-[70%] h-full blur-[250px] transition-all duration-0  bg-[#9f03ff] pointer-events-none noselect"
-           transition={{ stiffness: 100 }}
-            animate={{ x: cursorPosition.x - 700, y: cursorPosition.y - 200 }}
-          />
-          <motion.div
-            id="cursor"
-            className="absolute -z-2 w-[70%] h-full blur-[250px] transition-all duration-0 bg-[#ff09094e] pointer-events-none noselect"
-            initial={{ x: cursorPosition.x - 700, y: cursorPosition.y - 200 }}
-            animate={{ x: cursorPosition.x - 900, y: cursorPosition.y - 400 }}
-          />
-          <h1 className="text-4xl  md:text-8xl leading-tight cermo-font">
-            Explore<span className="text-[#c757ff]">.</span> Discover
-            <span className="text-[#c757ff]">.</span> Create
-            <span className="text-[#c757ff]">.</span>
+        <div className="hero-texts relative flex flex-col justify-center items-center gap-4 text-center">
+          <motion.span
+            animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200 }}
+            transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
+            className="follow-cursor absolute -z-1 bg-[#9a02ff] right-0 w-[70%] h-[70%]  blur-[200px] "
+          ></motion.span>
+          <motion.span
+            animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200 }}
+            transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
+            className="follow-cursor absolute -z-1 bg-[#ff0202] left-0 w-[70%] h-[70%]  blur-[200px] "
+          ></motion.span>
+          <h1 className="hero-heading text-4xl md:text-7xl ">
+            Discover. Create. Explore.
           </h1>
-          <p className="text-lg md:text-2xl max-w-[80%] md:max-w-[60%] text-center text-gray-300">
-            Utilize generative AI and a distinctive set of tools to bring your
-            ideas to life and share them with the world.
+          <p className="hero-paragraph text-lg md:w-[60%]">
+            Turn your ideas into stunning visuals! Get high-quality images from
+            Pixabay or create unique AI-generated artwork in seconds!
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 ">
+        
+
+        <div className="cta-con flex gap-2 md:gap-4 max-w-full">
           <Link to="/generate">
             {" "}
-            <button className="btn-gradient w-fit font-semibold px-6 py-2 flex gap-2 items-center rounded-md shadow-md ">
+            <button className="btn-gradient w-fit font-semibold px-1 md:px-6 py-5 flex gap-2 items-center rounded-md shadow-md ">
               Generate now
               <ArrowRight size={20}></ArrowRight>
             </button>
           </Link>
-          <button className="border border-solid px-6 py-2 rounded-md hover:bg-[#ffffff15] transition">
+          <button className="border border-solid px-1 md:px-6 py-5 rounded-md ">
             Learn More
           </button>
         </div>
-      </motion.div>
 
-      {/* Video Section */}
-      <motion.div 
-       initial={{ opacity: 0, x: 50 }} // Start off-screen
-       animate={{ opacity: 1, x: 0 }} // Animate to normal
-       exit={{ opacity: 0, x: 50 }} // Animate out
-       transition={{ duration: 0.65 }} // Speed
-      className="video-con max-w-6xl mt-12 relative h-[50vh] md:h-screen flex justify-center items-center bg-[#ffffff0b] overflow-hidden p-4">
-        <div 
-        
-        className="absolute -z-1 w-full h-full bg-gradient-to-b from-[#e4e4e489] to-[#2424244c] border-2 border-[#ffffff55] rounded-xl"></div>
-
-        <div
-         
-          className="vid-con perspective-distant transform-[3d]  w-full h-full flex justify-center items-center p-1 "
-        >
-          <video
-            autoPlay
-            loop
-            muted
-            src="../public/bgvid.mp4"
-            className=" w-full h-full object-cover rounded-[.5rem] border-2 border-[#ffffff44]"
-          />
-        </div>
-      </motion.div>
-
-      {/* Video Credits */}
-      <a
-        className="text-[#717171] italic mt-1 z-2"
-        href="https://www.instagram.com/abhijeetsinghvirdii/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        video credits - @abhijeet
-      </a>
-
-      <div className="max-w-6xl  flex flex-col justify-around gap-12 mt-12 md:p-4 lg:p-0">
-        <h1 className="text-8xl tracking-wide cermo-font text-center md:text-left font-bold">
-          Spotlight.
-        </h1>
-
-        <div className="spotlight grid md:grid-cols-2 lg:grid-cols-2 mx-2 lg:mx-0 grid-cols-1 gap-11">
-          {spotlightArr.map((e, index) => (
-            <div
-              key={index}
-              className="spotlight-cards aspect-square w-[100%] h-[100%] relative p-3 flex justify-center items-center"
-            >
-              <div className="w-full h-full absolute -z-1 bg-gradient-to-b from-[#c8e6ffb3] to-[#ffffff4c] rounded-lg"></div>
-              <img
-                className="w-full h-full object-cover border-[#ffffff63] rounded-[.5rem]"
-                src={e}
-                alt="Spotlight"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="w-full min-h-[50vh]  flex justify-center items-center relative mt-12 mx-2 ">
-        <div
-          data-scroll
-          data-scroll-speed="1.2"
-          className="absolute -z-1 w-[90%] h-[50%] bg-[#a109ff9c] blur-[400px] "
-        ></div>
-
-        <div className="w-6xl flex justify-between p-4 lg:p-0 gap-5">
-          <div className="flex flex-col justify-center  ">
-            <h1 className="text-2xl md:text-5xl -font">
-              Turn Your Imagination into Reality
-            </h1>
-            <h1 className="text-2xl md:text-4xl mt-6 text-[#edd7fc77] -font">
-              {" "}
-              & Share Anonymously!
-            </h1>
-            <button className="btn-gradient mt-6 w-fit font-semibold  flex gap-2 items-center rounded-md shadow-md hover:bg-[#000000] transition">
-              Generate now
-              <ArrowRight size={20}></ArrowRight>
-            </button>
-          </div>
-
-          <div className=" ">
-            <img
-              src={gif1}
-              alt=""
-              className="w-full h-full rounded-xl aspect-video object-cover"
-            />
-          </div>
-        </div>
-        
-        <hr className="w-full absolute bottom-0 border-[#ffffff1d]" />
-      </div>
-
-      <div className="w-6xl mt-12 flex flex-col relative cermo-font">
-        <span className="absolute translate-x-[50%]  translate-y-[50%] w-[50%] h-[50%] rounded-full scale-[.7] -z-1 blur-[400px] bg-[#f73715bb]"></span>
-        <h1 className="beH1 text-8xl tracking-wide mb-12 text-center  ">
-          Be featured in Infinity Archive,
-          <span className="text-[#edd7fc98]"> Get Upvoted!</span>
-        </h1>
-
-        <div className="masonry lg:p-0 p-4">
+        <div className="masonry mt-6 ">
           {infinity_archive_imgs_Arr.map((e, index) => (
             <div key={index} className="mb-4 break-inside-avoid">
               <img
@@ -243,11 +121,8 @@ function Home() {
             </div>
           ))}
         </div>
-
-        <span className="w-[101%] h-[4%] absolute bottom-0 blur-[400px] -z-1 bg-[#00e1ff]"></span>
       </div>
-      <Footer />
-    </motion.div>
+    </div>
   );
 }
 

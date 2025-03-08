@@ -1,37 +1,38 @@
-
-import Gallery from "./components/pages/Gallery";
-import Home from "./components/pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router";
-import StableDiffusionImageGenerator from "./components/pages/StableDiffusionImageGenerator";
-import { AnimatePresence } from "motion/react";
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
+import Navbar from "./components/ui/Navbar";
+import Home from "./components/pages/Home";
+import Generate from "./components/pages/Generate";
 import InfinityArchive from "./components/pages/InfinityArchive";
+import SearchPage from "./components/pages/Search";
+
 function App() {
-  
-    useEffect(() => {
-      const lenis = new Lenis({
-        duration: 1.2, // Adjust speed
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
-        
-      });
-  
-      function raf(time: number) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 2, // Adjust speed
+      easing: (t) => Math.min(100, 1.001 - Math.pow(2, -10 * t)), // Easing function
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
       requestAnimationFrame(raf);
-  
-      return () => lenis.destroy(); // Cleanup on unmount
-    }, []);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy(); // Cleanup on unmount
+  }, []);
+
   return (
     <BrowserRouter>
-   <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/generate" element={<StableDiffusionImageGenerator />} />
-      <Route path="/infinity-archive" element={<InfinityArchive />} />
-    </Routes>
-  </BrowserRouter>
+      <Navbar /> 
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/generate" element={<Generate />} />
+        <Route path="/infinity-archive" element={<InfinityArchive />} />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

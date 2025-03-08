@@ -22,9 +22,12 @@ a:hover {
 }
 
 body {
+  overflow-x: hidden;
   color: #ffffff ;
  background: #050505;
  font-family: "Montserrat", sans-serif;
+ box-sizing: border-box;
+
 }
 
 .grid-bg{
@@ -42,15 +45,15 @@ body {
 }
 
 button {
-  border-radius: 8px;
+  /* border-radius: 8px; */
   border: 2px solid  #ffffff6f;
-  padding: 0.6rem 1.2rem;
+  /* padding: 0.6rem 1.2rem; */
   cursor: pointer;
   transition: all 0.35s;
 }
 button:hover {
   color: #fff;
-background-color: #00000095;
+background-color: #000000db;
   border-color: #ffffff;
 }
 button:focus,
@@ -61,7 +64,7 @@ button:focus-visible {
 
 
 h1 {
-  position: relative;
+
   font-weight: bold;
 }
 
@@ -71,18 +74,22 @@ h1 {
   border: 20px solid #ffffff50;
  
 }
+.nav{
+  border: transparent 1px solid;
+  transition: all 0.45s ease;
+}
 
 .scrolled-nav{
-  background-color: #00000053;
+  font-weight: 800;
+  background-color: #00000069;
 padding: 1rem;
-border: #ffffff36 1px solid;
+border: #ffffff40 1px solid;
   backdrop-filter: blur(50px);
-  
+  justify-content: space-between;
+  width: 34rem;
 }
-nav{
-  border: transparent 1px solid;
-  transition: all 0.35s ease-in-out;
-}
+
+
 
 .section-gradient{
   background: rgb(146,87,255);
@@ -120,6 +127,59 @@ nav{
   width: 100%;
 }
 .cermo-font{
-  font-family: "Cormorant", serif;
+  font-family: 'Times Now', Times, serif;
+  letter-spacing: .2rem;
+  font-weight: 400;
+line-height: .96;
+color: #ffffff;
 }
 
+
+.btn-flip{
+	opacity: 1;
+	outline: 0;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+
+	
+	&:hover{
+		
+		&:after{
+			opacity: 1;
+			transform: translateY(0) rotateX(0);
+		}
+		
+		&:before{
+			opacity: 0;
+			transform: translateY(50%) rotateX(90deg);
+		}
+	}
+	
+	&:after{
+		top: 0;
+		left: 0;
+		opacity: 0;
+		width: 100%;
+
+		display: block;
+		transition: .5s;
+		position: absolute;
+    border-bottom: #ffffff 1px solid;
+   
+		content: attr(data-back);
+		transform: translateY(-50%) rotateX(90deg);
+	}
+	
+	&:before{
+		top: 0;
+		left: 0;
+		opacity: 1;
+	
+		display: block;
+		transition: .5s;
+		position: relative;
+		content: attr(data-front);
+		transform: translateY(0) rotateX(0);
+	}
+}
