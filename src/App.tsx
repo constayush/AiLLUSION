@@ -10,7 +10,7 @@ import SearchPage from "./components/pages/Search";
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 2, // Adjust speed
+      duration: 1.5, // Adjust speed
       easing: (t) => Math.min(100, 1.001 - Math.pow(2, -10 * t)), // Easing function
     });
 

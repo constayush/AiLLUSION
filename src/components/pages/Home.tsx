@@ -69,20 +69,26 @@ function Home() {
   ];
 
   return (
-    <div className="home-con  grid-bg min-h-screen w-full mt-40 flex flex-col items-center">
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    
+    className="home-con  grid-bg min-h-screen w-full mt-40 flex flex-col items-center">
       <div className="home relative max-w-6xl min-h-screen p-2 gap-4 flex flex-col items-center">
         <span className="absolute bg-gradients -z-1 bg-[#ffffff] w-[30%] h-[50%]  blur-[200px] "></span>
         <span className="absolute bg-gradients -z-2 bg-[#008cff] w-[30%] h-[50%]  blur-[200px] "></span>
 
         <div className="hero-texts relative flex flex-col justify-center items-center gap-4 text-center">
           <motion.span
-            animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200 }}
-            transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
+         
+            animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200,}}
+            transition={{ type: "tween", ease: "easeOut", duration: .5 }}
             className="follow-cursor absolute -z-1 bg-[#9a02ff] right-0 w-[70%] h-[70%]  blur-[200px] "
           ></motion.span>
           <motion.span
             animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200 }}
-            transition={{ type: "tween", ease: "easeOut", duration: 0.3 }}
+            transition={{ type: "tween", ease: "easeOut", duration: .5}}
             className="follow-cursor absolute -z-1 bg-[#ff0202] left-0 w-[70%] h-[70%]  blur-[200px] "
           ></motion.span>
           <h1 className="hero-heading text-4xl md:text-7xl ">
@@ -109,7 +115,11 @@ function Home() {
           </button>
         </div>
 
-        <div className="masonry mt-6 ">
+        <motion.div 
+        initial={{ opacity: 0, y:200 }}
+        transition={{ duration: .5, ease: "easeIn" }}
+        animate={{ opacity: 1, y:0}}
+        className="masonry mt-6 ">
           {infinity_archive_imgs_Arr.map((e, index) => (
             <div key={index} className="mb-4 break-inside-avoid">
               <img
@@ -120,9 +130,12 @@ function Home() {
               />
             </div>
           ))}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+
+
+
+      </div><Footer/>
+    </motion.div>
   );
 }
 

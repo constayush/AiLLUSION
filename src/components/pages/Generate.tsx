@@ -69,14 +69,23 @@ const Generate = () => {
   };
 
   return (
-    <motion.div className="generate-con grid-bg w-full mt-40 flex flex-col items-center">
+    <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    
+    className="generate-con grid-bg w-full mt-40 flex flex-col items-center">
       <div className="generate max-w-6xl min-h-screen p-4 gap-4 flex flex-col items-center">
         <h1 className="hero-heading text-4xl md:text-6xl text-center">
           What do you want to imagine<span className="text-[#d788ff]"> ?</span>
         </h1>
         <p className="text-center md:text-lg  md:w-[60%] mb-6" >Turn your words into stunning AI-generated images in seconds! Just type, create, and watch your imagination come to life</p>
 
-        <div className="w-full border-2 border-[#ffffff44] rounded-xl p-4 flex flex-col items-center justify-center bg-black">
+        <motion.div 
+          initial={{ y: 100 }}  
+          animate={{ y: 0 }}
+          transition={{ duration: 0.3 , ease: "easeIn"}}
+        className="w-full border-2 border-[#ffffff44] rounded-xl p-4 flex flex-col items-center justify-center bg-black">
           <div className="w-full">
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4">
              
@@ -118,7 +127,7 @@ const Generate = () => {
               Re-generate <RefreshCcw />
             </button></div>:""}
 
-        </div>
+        </motion.div>
       </div>
       <Footer />
     </motion.div>

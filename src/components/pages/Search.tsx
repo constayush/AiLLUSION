@@ -102,7 +102,12 @@ const SearchPage = () => {
   );
 
   return (
-    <motion.div className="generate-con grid-bg w-full mt-40 flex flex-col items-center">
+    <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    
+    className="generate-con grid-bg w-full mt-40 flex flex-col items-center">
       <div className="generate max-w-6xl  p-4 gap-4 flex flex-col items-center">
         <h1 className="hero-heading text-4xl md:text-6xl text-center">
           Search for What do you want<span className="text-[#d788ff]">.</span>
@@ -112,10 +117,16 @@ const SearchPage = () => {
           high-quality, royalty-free photos at your fingertips.
         </p>
        
-        <motion.div className="w-full border-2 border-[#ffffff44] rounded-xl p-4 flex flex-col items-center justify-center bg-black">
+        <motion.div 
+             initial={{ y: 100 }}  
+             animate={{ y: 0 }}
+             transition={{ duration: 0.3 , ease: "easeIn"}}
+        className="w-full border-2 border-[#ffffff44] rounded-xl p-4 flex flex-col items-center justify-center bg-black">
           
         <div className="w-full">
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4">
+            <motion.div
+         
+            className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4">
              
               <input
                 type="text"
@@ -135,7 +146,7 @@ const SearchPage = () => {
                 </button>
                 <SpeechToText onTextGenerated={setPrompt} />
               </div>
-            </div>{error && <p className="text-red-500 mt-2 animate-pulse">{error}</p>}
+            </motion.div>{error && <p className="text-red-500 mt-2 animate-pulse">{error}</p>}
           </div>
           {isLoading ? (
             <SkeletonLoader />
