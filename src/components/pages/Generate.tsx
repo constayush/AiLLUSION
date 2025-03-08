@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import WaitingImg from "../../../public/waitingTemp.webp";
+import WaitingImg from "/waitingTemp.webp";
 import axios from "axios";
 import SpeechToText from "../ui/STT";
 import { Search, Download, RefreshCcw, Send } from "lucide-react";
@@ -44,7 +44,7 @@ const Generate = () => {
       const imageBlob = new Blob([response.data], { type: "image/png" });
       const imageUrl = URL.createObjectURL(imageBlob);
       setImageUrl(imageUrl);
-    } catch (err) {
+    } catch (err:any) {
       console.error(
         "Error generating image:",
         err.response ? err.response.data : err

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import WaitingImg from "../../../public/waiting.gif";
+import WaitingImg from "/waiting.gif";
 import axios from "axios";
 import SpeechToText from "../ui/STT";
 import { Search, Download, RefreshCcw } from "lucide-react";
@@ -49,9 +49,9 @@ const SearchPage = () => {
         setImageUrls(response.data.hits.map((hit: any) => hit.largeImageURL));
         setPage(1); // Reset to page 1 for new searches
       } else {
-        setImageUrls((prevUrls) => [
+        setImageUrls((prevUrls): any => [
           ...prevUrls,
-          ...response.data.hits.map((hit) => hit.largeImageURL),
+          ...response.data.hits.map((hit:any) => hit.largeImageURL),
         ]);
         setPage((prevPage) => prevPage + 1); // Increment the page for "Generate More"
       }
@@ -127,7 +127,7 @@ const SearchPage = () => {
 
               <div className="btns flex  items-center gap-4 font-semibold">
                 <button
-                  onClick={generateImage}
+                  onClick={()=>generateImage(true)}
                   disabled={isLoading}
                   className="w-full bg-[#0f0f0f] text-white p-2 rounded-full "
                 >

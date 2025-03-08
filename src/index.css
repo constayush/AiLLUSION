@@ -31,13 +31,13 @@ body {
 }
 
 .grid-bg{
-  background-image:url(../public/grid.svg);
+  background-image:url(/grid.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .holo-bg{
-  background-image:url(../public/holobg.webp);
+  background-image:url(/holobg.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
