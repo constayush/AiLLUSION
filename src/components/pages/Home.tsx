@@ -77,7 +77,7 @@ function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="home-con  min-h-screen w-full mt-40 flex flex-col items-center"
+      className="home-con p-4 md:p-0  min-h-screen w-full mt-40 flex flex-col items-center"
     >
 
       <span className="w-full h-full absolute grid-bg -z-1"></span>
@@ -142,13 +142,13 @@ function Home() {
             Create stunning visuals with the power of AI.
           </p>
 
-          <div className="flex mt-6 gap-12">
+          <div className="flex flex-col md:flex-row mt-6 gap-12">
             <img
-              className=" aspect-square w-[50%] border rounded-2xl"
+              className=" aspect-square w-full md:w-[50%] border rounded-2xl"
               src={DemoVid}
             ></img>
 
-            <div className="w-[50%] flex flex-col gap-4 rounded-2xl text-lg">
+            <div className=" w-full md:w-[50%] flex flex-col gap-4 rounded-2xl text-lg">
               <p>
                 Powered by{" "}
                 <a target="_blank" href="https://stability.ai/">

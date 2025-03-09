@@ -22,8 +22,8 @@ function Navbar() {
     };
   }, []);
   return (
-    <nav className="w-full fixed z-50 top-0 left-0 mt-16  flex justify-center items-center">
-      <div className="w-5xl  nav  flex items-center justify-between p-2 rounded-xl  ">
+    <nav className="w-full fixed z-50 top-0 left-0 mt-8 p-1 md:p-0 md:mt-16  flex justify-center items-center">
+      <div className="w-5xl  nav  flex items-center justify-between p-4 md:p-2 rounded-xl  ">
         <h1 className="text-lg font-semibold text-[#f5e0ff]">Incognito-Art</h1>
 
         {/* Mobile Menu Button */}
