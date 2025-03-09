@@ -12,7 +12,8 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-
+    "strictFunctionTypes": false,
+    "noImplicitAny":false,
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

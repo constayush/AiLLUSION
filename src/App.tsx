@@ -10,8 +10,8 @@ import SearchPage from "./components/pages/Search";
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5, // Adjust speed
-      easing: (t) => Math.min(100, 1.001 - Math.pow(2, -10 * t)), // Easing function
+      duration: 1.5, 
+      easing: (t) => Math.min(100, 1.001 - Math.pow(2, -10 * t)), 
     });
 
     function raf(time: number) {
@@ -27,10 +27,12 @@ function App() {
     <BrowserRouter>
       <Navbar /> 
       <Routes>
+      
         <Route path="/" element={<Home />} />
         <Route path="/generate" element={<Generate />} />
         <Route path="/infinity-archive" element={<InfinityArchive />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

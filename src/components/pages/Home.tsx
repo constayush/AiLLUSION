@@ -8,6 +8,10 @@ import Footer from "../ui/Footer";
 import { easeIn } from "motion";
 import { Search } from "lucide-react";
 import SpeachToText from "../ui/STT";
+import DemoVid from "/waiting.gif";
+import ImageTrail from "../ui/HoverGrid";
+import ImgT from "../ui/HoverGrid";
+import { InfinityIcon , MoveRightIcon } from "lucide-react";
 function Home() {
   const [cursorPosition, setCursorPosition] = useState({ x: 500, y: 300 });
 
@@ -70,25 +74,26 @@ function Home() {
 
   return (
     <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    
-    className="home-con  grid-bg min-h-screen w-full mt-40 flex flex-col items-center">
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="home-con  min-h-screen w-full mt-40 flex flex-col items-center"
+    >
+
+      <span className="w-full h-full absolute grid-bg -z-1"></span>
       <div className="home relative max-w-6xl min-h-screen p-2 gap-4 flex flex-col items-center">
-        <span className="absolute bg-gradients -z-1 bg-[#ffffff] w-[30%] h-[50%]  blur-[200px] "></span>
-        <span className="absolute bg-gradients -z-2 bg-[#008cff] w-[30%] h-[50%]  blur-[200px] "></span>
+        <span className="absolute bg-gradients -z-1 bg-[#ffffff] w-[30%] h-[28%]  blur-[200px] "></span>
+        <span className="absolute bg-gradients -z-2 bg-[#008cff] w-[30%] h-[28%]  blur-[200px] "></span>
 
         <div className="hero-texts relative flex flex-col justify-center items-center gap-4 text-center">
           <motion.span
-         
-            animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200,}}
-            transition={{ type: "tween", ease: "easeOut", duration: .5 }}
+            animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200 }}
+            transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
             className="follow-cursor absolute -z-1 bg-[#9a02ff] right-0 w-[70%] h-[70%]  blur-[200px] "
           ></motion.span>
           <motion.span
             animate={{ x: cursorPosition.x - 600, y: cursorPosition.y - 200 }}
-            transition={{ type: "tween", ease: "easeOut", duration: .5}}
+            transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
             className="follow-cursor absolute -z-1 bg-[#ff0202] left-0 w-[70%] h-[70%]  blur-[200px] "
           ></motion.span>
           <h1 className="hero-heading text-4xl md:text-7xl ">
@@ -99,8 +104,6 @@ function Home() {
             Pixabay or create unique AI-generated artwork in seconds!
           </p>
         </div>
-
-        
 
         <div className="cta-con flex gap-2 md:gap-4 max-w-full">
           <Link to="/generate">
@@ -115,11 +118,12 @@ function Home() {
           </button>
         </div>
 
-        <motion.div 
-        initial={{ opacity: 0, y:200 }}
-        transition={{ duration: .5, ease: "easeIn" }}
-        animate={{ opacity: 1, y:0}}
-        className="masonry mt-6 ">
+        <motion.div
+          initial={{ opacity: 0, y: 200 }}
+          transition={{ duration: 0.5, ease: "easeIn" }}
+          animate={{ opacity: 1, y: 0 }}
+          className="masonry mt-6 relative "
+        >
           {infinity_archive_imgs_Arr.map((e, index) => (
             <div key={index} className="mb-4 break-inside-avoid">
               <img
@@ -132,9 +136,105 @@ function Home() {
           ))}
         </motion.div>
 
+        <div className="generate-promo mt-16 flex flex-col gap-4 ">
+          <h1 className="text-5xl text-center">✨laverage power of AI </h1>
+          <p className=" text-lg text-[#ffffffdc] text-center">
+            Create stunning visuals with the power of AI.
+          </p>
 
+          <div className="flex mt-6 gap-12">
+            <img
+              className=" aspect-square w-[50%] border rounded-2xl"
+              src={DemoVid}
+            ></img>
 
-      </div><Footer/>
+            <div className="w-[50%] flex flex-col gap-4 rounded-2xl text-lg">
+              <p>
+                Powered by{" "}
+                <a target="_blank" href="https://stability.ai/">
+                  stability.ai
+                </a>
+              </p>
+
+              <ul className="flex flex-col gap-4  text-[#ffffffdc]">
+                <li>
+                  ✓ Easy & Fast – Just type your idea and generate images in
+                  seconds.
+                </li>
+
+                <li>
+                  ✓ Unique Creations – Every image is AI-generated, making it
+                  one of a kind.
+                </li>
+
+                <li>
+                  ✓ High-Quality Output – Get crisp, detailed visuals for any
+                  use.
+                </li>
+
+                <li>
+                  ✓ Edit generated images on the go. – Adjust brightness,
+                  contrast, and more.
+                </li>
+
+                <li>
+                  ✓ Make generated images yours – Download, use it on your
+                  desired place{" "}
+                </li>
+
+                <li>
+                  💡 Try it now! Enter your prompt and watch creativity unfold.
+                </li>
+
+                <Link
+                  className="w-full flex justify-center items-center"
+                  to="/generate"
+                >
+                  <button className="btn-gradient w-full text-center font-semibold px-1 md:px-3 py-2 flex gap-2  justify-center items-center rounded-md shadow-md ">
+                    Generate now
+                    <ArrowRight size={20}></ArrowRight>
+                  </button>
+                </Link>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="search-promo  mt-16 flex flex-col gap-4 w-full bg-black rounded-xl p-6">
+          <h1 className="text-5xl text-center">
+            Unlock a World of Free Images
+          </h1>
+          <p className="text-center text-[#ffffffdc] text-lg">
+            Millions of Free Images, One Search Away
+          </p>
+
+          <div className="w-full">
+            <motion.div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4">
+              <input
+                type="text"
+                placeholder="Enter a prompt (e.g., 'a futuristic cityscape')"
+                className="w-full p-4 border-2 border-[#ffffff7e] rounded-4xl"
+              />
+
+              <div className="btns flex  items-center gap-4 font-semibold">
+                <button className="w-full bg-[#0f0f0f] text-white p-2 rounded-full h-full ">
+                 <MoveRightIcon/>
+                </button>
+              </div>
+            </motion.div>
+            {/* {error && <p className="text-red-500 mt-2 animate-pulse">{error}</p>} */}
+          </div>
+
+          <div
+            className="w-full playAni relative min-h-[30rem]
+          gap-12 flex justify-center items-center grid-bg"
+          >
+            <ImgT />
+            <InfinityIcon color="#ffffff20" className=" animate-pulse  w-full h-[30rem] "/>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </motion.div>
   );
 }

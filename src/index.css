@@ -20,7 +20,18 @@ a {
 a:hover {
   color: #c757ff;
 }
-
+::selection {
+  background-color: #a662c5fb;
+  color: #fff;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #80808068;
+  border-radius: 8px;
+}
+::-webkit-scrollbar{
+  background: #98989800;
+  width: .5em;
+}
 body {
   overflow-x: hidden;
   color: #ffffff ;
