@@ -11,7 +11,7 @@ import SpeachToText from "../ui/STT";
 import DemoVid from "/waiting.gif";
 import ImageTrail from "../ui/HoverGrid";
 import ImgT from "../ui/HoverGrid";
-import { InfinityIcon , MoveRightIcon } from "lucide-react";
+import { InfinityIcon, MoveRightIcon } from "lucide-react";
 function Home() {
   const [cursorPosition, setCursorPosition] = useState({ x: 500, y: 300 });
 
@@ -79,7 +79,6 @@ function Home() {
       exit={{ opacity: 0 }}
       className="home-con p-4 md:p-0  min-h-screen w-full mt-40 flex flex-col items-center"
     >
-
       <span className="w-full h-full absolute grid-bg -z-1"></span>
       <div className="home relative max-w-6xl min-h-screen p-2 gap-4 flex flex-col items-center">
         <span className="absolute bg-gradients -z-1 bg-[#ffffff] w-[30%] h-[28%]  blur-[200px] "></span>
@@ -101,7 +100,7 @@ function Home() {
           </h1>
           <p className="hero-paragraph text-lg md:w-[60%]">
             Turn your ideas into stunning visuals! Get high-quality images from
-            Pixabay or create unique AI-generated artwork in seconds!
+            Pexels or create unique AI-generated artwork in seconds!
           </p>
         </div>
 
@@ -218,7 +217,7 @@ function Home() {
 
               <div className="btns flex  items-center gap-4 font-semibold">
                 <button className="w-full bg-[#0f0f0f] text-white p-2 rounded-full h-full ">
-                 <MoveRightIcon/>
+                  <MoveRightIcon />
                 </button>
               </div>
             </motion.div>
@@ -226,11 +225,14 @@ function Home() {
           </div>
 
           <div
-            className="w-full playAni relative min-h-[30rem]
+            className="w-full playAni relative h-fit 
           gap-12 flex justify-center items-center grid-bg"
           >
             <ImgT />
-            <InfinityIcon color="#ffffff20" className=" animate-pulse  w-full h-[30rem] "/>
+            <InfinityIcon
+              color="#ffffff20"
+              className=" animate-pulse  w-full h-[30rem] "
+            />
           </div>
         </div>
       </div>
