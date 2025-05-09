@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import WaitingImg from "/waiting.gif";
 import axios from "axios";
 import SpeechToText from "../ui/STT";
-import { Search, Download, RefreshCcw } from "lucide-react";
+import { Search, Download, RefreshCcw, Edit2 } from 'lucide-react';
 import Footer from "../ui/Footer";
-import { Url, UrlObject } from "url";
+import ImageEditor from "../ui/ImageEditor";
 
 const SearchPage = () => {
   const [prompt, setPrompt] = useState("");
@@ -13,10 +13,12 @@ const SearchPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string | null>(null);
+  const [editedImages, setEditedImages] = useState<Record<string, string>>({});
 
   // Pexels API endpoint
   const API_URL = "https://api.pexels.com/v1/search";
-  const PEXELS_API_KEY = `${import.meta.env.VITE_PEXELS_KEY}`;
+  const PEXELS_API_KEY = `${import.meta.env.VITE_PEXELS_API_KEY}`;
 
   const generateImage = async (newSearch = true) => {
     if (!prompt.trim()) {
@@ -64,12 +66,30 @@ const SearchPage = () => {
 
   const handleDownload = (url: string) => {
     if (!url) return;
+    // Use edited version if available
+    const imageToDownload = editedImages[url] || url;
     const link = document.createElement("a");
-    link.href = url;
+    link.href = imageToDownload;
     link.download = "pexels-image.jpg";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleEditImage = (url: string) => {
+    setSelectedImageUrl(url);
+  };
+
+  const handleCloseEditor = () => {
+    setSelectedImageUrl(null);
+  };
+
+  const handleSaveEdit = (url: string, editedImageUrl: string) => {
+    setEditedImages((prev) => ({
+      ...prev,
+      [url]: editedImageUrl,
+    }));
+    setSelectedImageUrl(null);
   };
 
   return (
@@ -104,9 +124,9 @@ const SearchPage = () => {
               <button
                 onClick={() => generateImage(true)}
                 disabled={isLoading}
-                className="w-full bg-[#0f0f0f] text-white p-2 rounded-full"
+                className="w-full bg-[#0f0f0f] text-white p-3  rounded-full"
               >
-                {isLoading ? "Generating..." : <Search />}
+                {isLoading ? "Generating..." : <Search className="" />}
               </button>
               <SpeechToText onTextGenerated={setPrompt} />
             </div>
@@ -116,35 +136,54 @@ const SearchPage = () => {
           {imageUrls.length <= 0 ? (
             <div className="w-full relative flex items-center justify-center">
               <h1 className="absolute z-10 text-[#ffffff92] animate-pulse">
-                ( waiting for a prompt )
+                ( waiting for a query )
               </h1>
               <img
                 className="object-cover w-full max-h-[10rem] rounded-xl brightness-10"
-                src={WaitingImg}
+                src={WaitingImg || "/placeholder.svg"}
                 alt="Waiting"
               />
             </div>
           ) : (
             <div className="max-w-6xl">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-                {imageUrls.map((url, index) => (
-                  <div
-                    key={index}
-                    className="relative group border rounded-lg border-[#ffffff3c]"
-                  >
-                    <img
-                      src={url}
-                      alt={`Generated Image ${index + 1}`}
-                      className="w-full h-48 object-cover rounded-lg shadow-lg"
-                    />
-                    <button
-                      onClick={() => handleDownload(url)}
-                      className="absolute bottom-2 right-2 bg-black/50 text-white p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                {imageUrls.map((url, index) => {
+                  // Use edited version if available for display
+                  const displayUrl = editedImages[url] || url;
+                  return (
+                    <div
+                      key={index}
+                      className="relative group border rounded-lg border-[#ffffff3c]"
                     >
-                      <Download className="size-4" />
-                    </button>
-                  </div>
-                ))}
+                      <img
+                        src={displayUrl || "/placeholder.svg"}
+                        alt={`Generated Image ${index + 1}`}
+                        className="w-full h-48 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="absolute bottom-2 right-2 flex gap-2">
+                        <button
+                          onClick={() => handleEditImage(url)}
+                          className="bg-black/50 text-white p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <Edit2 className="size-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDownload(url)}
+                          className="bg-black/50 text-white p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <Download className="size-4" />
+                        </button>
+                      </div>
+                      {editedImages[url] && (
+                        <div className="absolute top-2 right-2">
+                          <span className="bg-purple-700 text-white text-xs px-2 py-1 rounded-full">
+                            Edited
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
               <div className="flex flex-col w-full gap-4 justify-center items-center mt-8">
                 {isLoading ? (
@@ -165,6 +204,15 @@ const SearchPage = () => {
           )}
         </motion.div>
       </div>
+      
+      {selectedImageUrl && (
+        <ImageEditor
+          imageUrl={selectedImageUrl}
+          onClose={handleCloseEditor}
+          onSave={(editedImageUrl) => handleSaveEdit(selectedImageUrl, editedImageUrl)}
+        />
+      )}
+      
       <Footer />
     </motion.div>
   );

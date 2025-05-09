@@ -6,7 +6,7 @@ function Footer() {
     <hr className="border-[#ffffff33] w-full" />
     <div className="w-full flex justify-between items-center gap-4 grid-bg py-8 px-16">
       <h1 className="text-3xl">Incognito Art</h1>
-      <a target="_blank" href="https://www.x.com/ayushKodes">
+      <a target="_blank" href="https://constayush.vercel.app">
       &copy; 2025 Ayush. All rights reserved.
       </a>
     </div>
