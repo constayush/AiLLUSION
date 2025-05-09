@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import WaitingImg from "/waitingTemp.webp";
-import axios from "axios";
 import SpeechToText from "../ui/STT";
 import { Search, Download, RefreshCcw, Send } from "lucide-react";
 import Footer from "../ui/Footer";
-
+import axios from "axios";
+import FormData from "form-data"; 
 const Generate = () => {
   const [prompt, setPrompt] = useState("");
   const [imageUrl, setImageUrl] = useState(WaitingImg);
@@ -13,48 +13,52 @@ const Generate = () => {
   const [error, setError] = useState("");
 
   const API_URL =
-    "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5";
+    "https://api.stability.ai/v2beta/stable-image/generate/sd3";
 
-  const generateImage = async () => {
-    if (!prompt.trim()) {
-      setError("Please enter a prompt.");
-      return;
-    }
 
-    setIsLoading(true);
-    setError("");
+const generateImage = async () => {
+  if (!prompt.trim()) {
+    setError("Please enter a prompt.");
+    return;
+  }
 
-    try {
-      const response = await axios.post(
-        API_URL,
-        {
-          inputs: prompt.trim(),
+  setIsLoading(true);
+  setError("");
+
+  try {
+    const formData = new FormData();
+    formData.append("prompt", prompt.trim());
+    formData.append("output_format", "jpeg");
+
+    const response = await axios.post(
+      "https://api.stability.ai/v2beta/stable-image/generate/sd3",
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_HUGGING_FACE_TOKEN}`,
+          Accept: "image/*",
         },
-        {
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_HUGGING_FACE_TOKEN}`,
-          },
-          responseType: "blob", // Response is a binary image
-        }
-      );
+        responseType: "blob", // Important for image blob
+      }
+    );
 
-      // Convert the binary image data to a URL
-      const imageBlob = new Blob([response.data], { type: "image/png" });
-      const imageUrl = URL.createObjectURL(imageBlob);
-      setImageUrl(imageUrl);
-    } catch (err: any) {
-      console.error(
-        "Error generating image:",
-        err.response ? err.response.data : err
-      );
-      setError(
-        err.response?.data?.error ||
-          "Failed to generate image. Please try again."
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    const imageBlob = new Blob([response.data], { type: "image/jpeg" });
+    const imageUrl = URL.createObjectURL(imageBlob);
+    setImageUrl(imageUrl);
+  } catch (err: any) {
+    console.error(
+      "Error generating image:",
+      err.response ? err.response.data : err
+    );
+    setError(
+      err.response?.data?.error ||
+        "Failed to generate image. Please try again."
+    );
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   const handleDownload = () => {
     if (!imageUrl || imageUrl === WaitingImg) return;
@@ -102,7 +106,7 @@ const Generate = () => {
                 <button
                   onClick={generateImage}
                   disabled={isLoading}
-                  className="w-full bg-[#0f0f0f] text-white p-2 rounded-full "
+                  className="w-full bg-[#0f0f0f] text-white p-3 rounded-full "
                 >
                   {isLoading ? "Generating..." : <Search />}
                 </button>

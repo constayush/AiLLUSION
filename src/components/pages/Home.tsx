@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Menu, Scale, X } from "lucide-react"; // Icons for menu toggle
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { motion, useScroll } from "motion/react";
@@ -27,12 +26,6 @@ function Home() {
     };
   }, []);
 
-  const spotlightArr = [
-    "https://images.unsplash.com/photo-1740021546242-8b718a3e0459?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1739536176048-caa7190dba66?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3OHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1739433438008-df0254a1d143?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNDV8fHxlbnwwfHx8fHw%3D",
-    "https://images.unsplash.com/photo-1739733901481-2c0074e33ede?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyMDR8fHxlbnwwfHx8fHw%3D",
-  ];
   const infinity_archive_imgs_Arr = [
     {
       img: "https://images.unsplash.com/photo-1740004731264-3cde5c198cc2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8",
@@ -112,9 +105,10 @@ function Home() {
               <ArrowRight size={20}></ArrowRight>
             </button>
           </Link>
+          <Link to='/search'>
           <button className="border border-solid px-1 md:px-6 py-5 rounded-md ">
-            Learn More
-          </button>
+            Search now
+          </button></Link>
         </div>
 
         <motion.div
@@ -135,19 +129,19 @@ function Home() {
           ))}
         </motion.div>
 
-        <div className="generate-promo mt-16 flex flex-col gap-4 ">
+        <div className="generate-promo mt-16 flex flex-col gap-4 w-full relative  justify-center items-center">
           <h1 className="text-5xl text-center">✨laverage power of AI </h1>
           <p className=" text-lg text-[#ffffffdc] text-center">
             Create stunning visuals with the power of AI.
           </p>
 
-          <div className="flex flex-col md:flex-row mt-6 gap-12">
-            <img
-              className=" aspect-square w-full md:w-[50%] border rounded-2xl"
+          <div className="flex   flex-col md:flex-row w-full mt-6 gap-12">
+            {/* <img
+              className=" aspect-square  opacity-15 w-full border rounded-2xl"
               src={DemoVid}
-            ></img>
+            ></img> */}
 
-            <div className=" w-full md:w-[50%] flex flex-col gap-4 rounded-2xl text-lg">
+            <div className=" bg-stone-400/10 w-full  p-12  flex flex-col gap-4 rounded-2xl text-lg">
               <p>
                 Powered by{" "}
                 <a target="_blank" href="https://stability.ai/">
@@ -156,34 +150,12 @@ function Home() {
               </p>
 
               <ul className="flex flex-col gap-4  text-[#ffffffdc]">
-                <li>
-                  ✓ Easy & Fast – Just type your idea and generate images in
-                  seconds.
-                </li>
-
-                <li>
-                  ✓ Unique Creations – Every image is AI-generated, making it
-                  one of a kind.
-                </li>
-
-                <li>
-                  ✓ High-Quality Output – Get crisp, detailed visuals for any
-                  use.
-                </li>
-
-                <li>
-                  ✓ Edit generated images on the go. – Adjust brightness,
-                  contrast, and more.
-                </li>
-
-                <li>
-                  ✓ Make generated images yours – Download, use it on your
-                  desired place{" "}
-                </li>
-
-                <li>
-                  💡 Try it now! Enter your prompt and watch creativity unfold.
-                </li>
+              <li>✓ <strong>Easy & Fast</strong> – Just type your idea and generate images in seconds.</li>
+  <li>✓ <strong>Unique Creations</strong> – Every image is AI-generated, making it one of a kind.</li>
+  <li>✓ <strong>High-Quality Output</strong> – Get crisp, detailed visuals for any use.</li>
+  <li>✓ <strong>Edit generated images on the go.</strong> – Adjust brightness, contrast, and more.</li>
+  <li>✓ <strong>Make generated images yours</strong> – Download, use it on your desired place.</li>
+  <li>💡 <strong>Try it now!</strong> Enter your prompt and watch creativity unfold.</li>
 
                 <Link
                   className="w-full flex justify-center items-center"
@@ -198,8 +170,49 @@ function Home() {
             </div>
           </div>
         </div>
+        <div className="generate-promo mt-16 flex flex-col gap-4 w-full relative  justify-center items-center">
+          <h1 className="text-5xl text-center">🚀Fuel Your Vision with Real-World Search.</h1>
+          <p className=" text-lg text-[#ffffffdc] text-center">
+            Search stunning visuals with the power of PEXELS.
+          </p>
 
-        <div className="search-promo  mt-16 flex flex-col gap-4 w-full bg-black rounded-xl p-6">
+          <div className="flex   flex-col md:flex-row w-full mt-6 gap-12">
+         
+
+            <div className=" bg-stone-400/10 w-full  p-12  flex flex-col gap-4 rounded-2xl text-lg">
+              <p>
+                Powered by{" "}
+                <a target="_blank" href="https://www.pexels.com/">
+                Pexels API
+                </a>
+              </p>
+
+              <ul className="flex flex-col gap-4  text-[#ffffffdc]">
+              <li>✓ <strong>Instant Access</strong> – Search millions of real-world images in a flash.</li>
+  <li>✓ <strong>Authentic Visuals</strong> – Real photos by real photographers, ready to inspire.</li>
+  <li>✓ <strong>High-Quality Results</strong> – Get sharp, stunning imagery for any project.</li>
+  <li>✓ <strong>No Prompt Stress</strong> – No need to describe the perfect image—just find it.</li>
+  <li>✓ <strong>Free to Use</strong> – Download and use without worrying about licenses.</li>
+  <li>🚀 <strong>Explore Now!</strong> Search your idea and let the real world do the magic.</li>
+                <Link
+                  className="w-full flex justify-center items-center"
+                  to="/search"
+                >
+                  <button className="btn-gradient w-full text-center font-semibold px-1 md:px-3 py-2 flex gap-2  justify-center items-center rounded-md shadow-md ">
+                    Search now
+                    <ArrowRight size={20}></ArrowRight>
+                  </button>
+                </Link>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div className="search-promo  mt-16 flex flex-col justify-center items-center gap-4 w-full bg-black border-6 border-[#ffffff2c] rounded-xl p-6">
+        <span className="absolute bg-gradients -z-1 bg-[#ff0a505a] w-[90%] h-[8%]  blur-[200px] "></span>
+      <span className="absolute bg-gradients -z-1 bg-[#ba32fe] w-[60%] h-[12%]  blur-[200px] "></span>
+      <span className="absolute bg-gradients -z-1 bg-[#6ef5ff2f] w-[90%] h-[22%]  blur-[900px] "></span>
           <h1 className="text-5xl text-center">
             Unlock a World of Free Images
           </h1>
